@@ -1,0 +1,11 @@
+series: SERIES_NAME
+title: PROJECT_NAME
+author:
+  name: AUTHOR_NAME
+  email:
+  github: AUTHOR_GITHUB
+description: DESCRIPTION
+language: LANGUAGE_NAME
+tags:
+extra_resources:
+connections:

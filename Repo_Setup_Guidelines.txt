@@ -1,0 +1,80 @@
+Tutorial Setup Guidelines
+=========================
+
+The phrases 'tutorial,' 'project,' and 'repo' will be used somewhat interchangeably.
+They all refer to the same idea: the collection of data that constitutes an ATLAS node of information.
+
+Structure
+---------
+
+All C/C++ tutorials should be set up to work with CMake.  It should have the
+following directory structure:
+
+RepoRoot/
+|---[- header/]
+|		# optional
+|		# Contains all header files (.h, .hpp, .inl)
+|---[- lib/]
+|		# optional
+|		# Contains all libraries used, zipped. To be extracted by CMake
+|---[- shaders/]
+|		# optional
+|		# Contains all shaders (.glsl, .vs, .fs)
+|---- source/
+|		# Required, even if all you have is main.cpp
+|		# Contains all source files (.c, .cpp)
+|---- .gitignore
+|		# Only needs the statement `build'
+|		# See .gitignore included in this repo
+|---- CMakeLists.txt
+|		# Every tutorial will have a slightly different CMakeLists.txt, but most should be akin to the included file in this repo
+|			# The included CMakeLists.txt example shows how to include GLFW, GLEW, and GLM in an OpenGL project
+|		# In essense, nothing should be copied except unzipping libraries and copying .dll files
+|		# In particular source files should not be copied
+|---- LICENSE
+|		# All tutorials will be licensed under GPL-3.0
+|		# See LICENSE file in this repo
+|---- README.md
+|		# Every Readme will be slightly different, but most should be akin to README_BASE.md in this repo
+|---- igme_config.yml
+|		# Every igme_config.yml will have the structure defined in igme_config_base.yml
+|		# Use igme_config_config.sh to setup this file (needs to be run in *nix-like env [if you have git bash, that'll do])
+|			# DO NOT INCLUDE igme_config_config.sh IN THE REPO
+|---- igme_thumbnail.png
+|		# A simple image of the tutorial running (even if all it does is print to the console!)
+|		# See an example in this repo
+|---- setup
+|		# Setup for OS X and Linux systems
+|		# See included files
+`---- setup.cmd
+		# Setup for Windows systems
+		# See included files
+
+If a tutorial has nothing but links (a highly undesirable, but possible situation), then the directory structure is
+RepoRoot/
+|---- LICENSE
+|---- README.md
+`---- igme_config.yml
+
+No other files are necessary.
+
+Included tools
+--------------
+igme_config_base.yml
+- The base file for igme_config.yml
+- Setup to work with igme_config_config.sh
+- See documentation for full parameter list
+
+igme_config_config.sh
+- Usage: ./igme_config_config.sh ConfigFile [Series] [Project] [Author] [AuthorGithub] [Description] [Language]
+- Automatically names the series, project, author.name, author.github, description, and language parameters in ConfigFile,
+	which should be a copy of igme_config_base.yml
+
+igme_project_convert.sh
+- Converts a Visual Studio Project to a CMake project
+- Every VS project is a little different, so this will require customization and tweaking on your part.
+- Tested on Visual Studio 15
+
+igme_prepend_header.sh
+- Usage: ./igme_prepend_header.sh FileToPrependTo [ProjectName] [AuthorName]
+- Prepends the license header for ATLAS developers under David Schwartz to a source file

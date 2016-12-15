@@ -1,0 +1,28 @@
+typical visual studio project setup
+
+repo/
+	- project/
+		- Debug/
+			- project.exe
+			- project.ilk
+			- project.pdb
+			- glew32.dll
+		- source/
+			- Debug/
+				- *literally nothing interesting*
+			- include/
+				- glew/
+				- glfw/
+				- glm/
+			- lib/
+				- glew32.lib
+				- glfw3.lib
+			- project.vcxproj
+			- project.filters
+			- *.glsl
+			- *.cpp
+			- *.h
+		- project.sdf
+		- project.sln
+		- project.suo
+		- project.v12.suo
